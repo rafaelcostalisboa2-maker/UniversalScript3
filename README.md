@@ -4,8 +4,15 @@ local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
 local LocalPlayer = Players.LocalPlayer
 
--- 2. CONFIGURAÇÃO DA KEY ATUALIZADA
-local CorrectKey = "scriptland1" 
+-- 2. CONFIGURAÇÃO DAS KEYS PERMANENTES
+-- Todas estas keys liberam o acesso; elas não são exibidas na interface.
+local ValidKeys = {
+    ["scriptland1"] = true,
+    ["scriptland2"] = true,
+    ["scriptland3"] = true,
+    ["scriptland4"] = true,
+    ["scriptland5"] = true,
+}
 
 -- 3. FUNÇÃO DO SEU HUB ORIGINAL
 local function IniciarHubOriginal()
@@ -869,7 +876,7 @@ GetKeyBtn.MouseButton1Click:Connect(function()
 end)
 
 CheckBtn.MouseButton1Click:Connect(function()
-    if KeyInput.Text == CorrectKey then
+    if ValidKeys[KeyInput.Text] == true then
         local successColor = Color3.fromRGB(50, 255, 50) 
         CustomNotify("KEY VERIFICADA", "Acesso concedido, o script irá carregar", false, successColor)
         task.wait(1.5)
